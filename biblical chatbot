@@ -1,0 +1,170 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+
+
+import pyttsx3 as pt
+import speech_recognition as sr
+
+conda install pyaudio
+
+
+import pyaudio
+
+
+
+engine = pt.init() 
+
+voices = engine.getProperty("voices")
+
+
+
+engine.setProperty('voice', voices[1].id)
+
+
+volume = engine.getProperty('volume')
+engine.setProperty('volume', 10.0)
+
+
+intro = ['hey there', 'hello']
+engine.say(intro)
+engine.runAndWait()
+
+
+# In[59]:
+
+
+def speak(input):
+    engine.say("say something")
+    engine.runAndWait()
+
+engine.say("hello!nice to meet you")
+engine.runAndWait()
+
+def speak(input):
+    engine.say("input")
+    engine.runAndWait()
+
+
+
+intro = ['Praise the lord','How are you doing?','i am fine,how about you']
+engine.say(intro)
+engine.runAndWait()
+
+
+
+
+def speak(input):
+    engine.say("input")
+    engine.runAndWait()
+
+
+
+
+
+intro = ['I am fine,how about you?']
+engine.say(intro)
+engine.runAndWait()
+
+
+
+def speak(input):
+    engine.say("input")
+    engine.runAndWait()
+
+
+
+
+
+r = sr.Recognizer()
+
+
+
+
+with sr.Microphone() as Source:
+
+
+
+
+print("Tell me something:")
+audio = r.listen(Source)
+text= r.recognize_google(audio)
+print(text)
+   try:
+      if text=="hello":
+         print(": hello, how are you feeling today?")
+         s.say("i can suggest you biblical verses according to your mood?")
+         s.runAndWait()
+
+      elif text=="who are you":
+         print(": i am a chat bot. I will try to answer questions.\n"
+             "sometimes I need help as I am in develping stage.\n So How may I help you today")
+         s.say("I am a chat bot. I will try to answer questions. Sometimes I need help as I am in develping stage. So How may I help you today")
+         s.runAndWait()
+      elif text=="i am feeling great":
+         print(": great! hallelujah!!")
+         s.say("great! hallelujah!")
+         s.runAndWait()
+      elif text=="tell about jesus":
+         print(": jesus is cokming soon be prepared!")
+         s.say("jesus is coming soon be prepared!")
+         s.runAndWait()
+      elif text=="suggest me a bible verse for bad/ gloomy day":
+          print("Psalm 50:15 15and call on me in the day of trouble; I will deliver you, and you will honor me. ")
+          s.say("Psalm 50:15 15and call on me in the day of trouble; I will deliver you, and you will honor me. ")
+          s.runAndWait()
+      elif text==("do you love jesus"):
+         print(": ofcourse, I love you jesusy")
+         s.say("ofcourse, I love you jesus")
+         s.runAndWait()
+      elif text=="good morning":
+         print(": good morning dear, god bless you")
+         s.say("good morning dear, god bless you")
+         s.runAndWait()
+      elif text=="suggest me a bible verse for bad/ gloomy day":
+          print("Psalm 118:24 “This is the day that the LORD has made; let us rejoice and be glad in it.”. It is another great day. ")
+          s.say("Psalm 118:24 “This is the day that the LORD has made; let us rejoice and be glad in it.”. It is another great day. ")
+          s.runAndWait()
+      elif text=="good evening":
+         print(": good evening dear, god bless you ")
+         s.say("good evening dear, god bless you")
+         s.runAndWait()
+      elif text=="which is your favourite bible verse?":
+         print(":John3;16 ")
+         s.say("John 3:16")
+         s.runAndWait()
+      elif text=="who is yout fav charater of bible":
+         print(": my favourite character is Ruth")
+         s.say("my favoourite character is Ruth")
+         s.runAndWait()
+      elif text=="who made this program":
+         print(": This program is made by an Enlgihten Believer Ayushi George")
+         s.say("This program is made by an Enlighten Believer Ayushi George")
+         s.runAndWait()
+      elif text=="what is your aim":
+          print(": My aim to finish my race diligently.")
+          s.say("my aim is to finish my race diligently")
+          s.runAndWait()
+      elif text=="suggest me series":
+          print("you can watch JesusCode. It is an devotional yet fact based series")
+          s.say("you can watch JesusCode. It is a great devoltional yet fact based series")
+          s.runAndWait()
+      elif text=="suggest me tv series":
+          print("you can Yeshu. It is an indian representation of Jesus life. ")
+          s.say("you can watch Yeshu. It is an indian representation of Jesus life. ")
+          s.runAndWait()
+            
+        
+  except:
+      print(": sorry try again")
+      s.say("sorry, Try again")
+  i=int(input("enter 0 for stop and 1 to continue:"))
+
+print("thanks for using, god bless you!!")
+
+
+# In[ ]:
+
+
+
+

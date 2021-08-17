@@ -1,0 +1,116 @@
+import tensorflow as tf
+from tensorflow import keras
+from tensorflow.keras import layers
+from tensorflow.keras.layers import Conv2D,MaxPooling2D,Dense,Dropout,Flatten
+from tensorflow.keras.models import Sequential
+from keras.layers.normalization import BatchNormalization
+from keras.preprocessing.image import ImageDataGenerator
+
+# This is a simple keras library import for CNN 
+#import tensorflow.keras
+from PIL import Image, ImageOps
+import numpy as np
+
+def gen_labels():
+    labels = {}
+    with open("labels.txt", "r") as label:
+        text = label.read()
+        lines = text.split("\n")
+        for line in lines[0:-1]:
+            hold = line.split(" ", 1)
+            labels[hold[0]] = hold[1]
+    return labels
+# Disable scientific notation for clarity
+np.set_printoptions(suppress=True)
+
+# Load the model
+model = tensorflow.keras.models.load_model('keras_model.h5')
+
+# Create the array of the right shape to feed into the keras model
+# The 'length' or number of images you can put into the array is
+# determined by the first position in the shape tuple, in this case 1.
+data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
+
+# Replace this with the path to your image
+image = Image.open('naruto.jpg')
+
+#resize the image to a 224x224 with the same strategy as in TM2:
+#resizing the image to be at least 224x224 and then cropping from the center
+size = (224, 224)
+image = ImageOps.fit(image, size, Image.ANTIALIAS)
+
+#turn the image into a numpy array
+image_array = np.asarray(image)
+
+# display the resized image
+image.show()
+
+# Normalize the image
+normalized_image_array = (image_array.astype(np.float32) / 127.0) - 1
+
+# Load the image into the array
+data[0] = normalized_image_array
+
+# run the inference
+prediction = model.predict(data)
+print(prediction)
+result = np.argmax(prediction[0])
+print(gen_labels()[str(result)])
+
+
+import playsound 
+
+import os
+import pyttsx3
+import speech_recognition as sr
+i=1
+while(i==1):
+  r=sr.Recognizer()
+  with sr.Microphone() as source:
+     r.adjust_for_ambient_noise(source)
+     r.pause_threshold=1
+     print("speak now")
+     audio=r.listen(source)
+  try:
+    text=r.recognize_google(audio)
+
+    print(text)
+  except:
+      print("sorry speak again ")
+  s=pyttsx3.init()
+  v=s.getProperty('voices')
+  v
+  s.setProperty('voice',v[1].id)
+
+    try:
+        if prediction==0 :
+            print("Light Yagami")
+            s.say("hellO, Light Yagami")
+            s.runAndWait() 
+         
+        elif prediction==1:
+            print("Monkey D. Luffy")
+            s.say("hellO, Monkey D. Luffy")
+            s.runAndWait()
+         
+        elif prediction==2:
+            print("Naruto Uzumaki")
+            s.say("hello, Naruto Uzumaki")
+            s.runAndWait()
+         
+        elif prediction==3:
+            print("Goku")
+            s.say("hellO, Goku")
+            s.runAndWait()
+         
+    except:
+        print("Lelouch Lamprouge")
+        s.say("hello,Lelouch Lamperouge")
+        s.runAndWait()
+
+i=int(input("enter 0 for stop and 1 to continue:"))
+
+
+print("Thanks for using")
+        
+         
